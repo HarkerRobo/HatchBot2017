@@ -12,6 +12,11 @@ import frc.robot.subsystems.HatchPanelIntake;
  */
 public class ToggleHatchIntakeDirection extends InstantCommand {
 
+    public ToggleHatchIntakeDirection()
+    {
+        requires(HatchPanelIntake.getInstance());
+    }
+
     @Override
     public void initialize() {
         HatchPanelIntake.getInstance().setSolenoidState(HatchPanelIntake.getInstance().getSolenoidState() == DoubleSolenoid.Value.kForward ? DoubleSolenoid.Value.kReverse : DoubleSolenoid.Value.kForward);

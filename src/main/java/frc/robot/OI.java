@@ -11,7 +11,7 @@ import harkerrobolib.wrappers.XboxGamepad;
  * @author Austin Wang
  */
 public class OI {
-    private OI instance;
+    private static OI instance;
     private HSGamepad driverGamepad;
     private HSGamepad operatorGamepad; 
     
@@ -21,7 +21,7 @@ public class OI {
     private static final int OPERATOR_PORT = 1;        
 
     private OI() {
-        driverGamepad = new XboxGamepad(DRIVER_PORT));
+        driverGamepad = new XboxGamepad(DRIVER_PORT);
         operatorGamepad = new LogitechAnalogGamepad(OPERATOR_PORT);
     }
     public HSGamepad getDriverGamepad() {
@@ -33,7 +33,7 @@ public class OI {
     }
 
 
-    public OI getInstance() {
+    public static OI getInstance() {
         if(instance == null) {
             instance = new OI();
         }

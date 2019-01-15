@@ -37,7 +37,7 @@ public class HatchPanelIntake extends Subsystem {
 
     @Override
     public void initDefaultCommand() {
-        //setDefaultCommand(something);
+        //do nothing
     }
 
     public DoubleSolenoid.Value getSolenoidState() {

@@ -1,5 +1,8 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+
 import frc.robot.RobotMap.CAN_IDS;
 import frc.robot.commands.DriveWithVelocityManual;
 import harkerrobolib.subsystems.HSDrivetrain;
@@ -12,7 +15,7 @@ import harkerrobolib.wrappers.HSTalon;
  * @since January 14 2019
  */
 public class Drivetrain extends HSDrivetrain {
-    private Drivetrain dt;
+    private static Drivetrain dt;
     private static Drivetrain instance; 
 
     private static final boolean LEFT_MASTER_INVERTED = false;
@@ -20,8 +23,8 @@ public class Drivetrain extends HSDrivetrain {
     private static final boolean LEFT_FOLLOWER_INVERTED = false;
     private static final boolean RIGHT_FOLLOWER_INVERTED = false;
 
-    private static final int PEAK_LIMIT = 2O;
-    private static final int PEAK_TIME = 1;
+    private static final int PEAK_LIMIT = 20;
+    private static final int PEAK_TIME = 1000;
     private static final int CONTINUOUS_LIMIT= 15;
 
     private static final NeutralMode NEUTRAL_MODE = NeutralMode.Brake;        
@@ -43,16 +46,16 @@ public class Drivetrain extends HSDrivetrain {
     protected void initDefaultCommand() {
         setDefaultCommand(new DriveWithVelocityManual());
     }
-
-    public 
-
-    public Drivetrain getInstance(){
+    
+    public void arcadeDrivePercentOutput(double output, double turn) {
+        getLeftMaster().set(ControlMode.PercentOutput, output + turn);
+        getRightMaster().set(ControlMode.PercentOutput, output - turn);
+    }
+    
+    public static Drivetrain getInstance() {
         if(instance == null) {
             dt = new Drivetrain();
         }
         return instance;
     }
-
-
-
 }

@@ -2,9 +2,8 @@ package frc.robot.commands;
 
 import frc.robot.OI;
 import frc.robot.subsystems.Drivetrain;
-import frc.robot.OI;
-import frc.robot.subsystems.Drivetrain;
 import harkerrobolib.commands.IndefiniteCommand;
+import harkerrobolib.util.MathUtil;
 
 
 /**
@@ -24,7 +23,7 @@ public class DriveWithVelocityManual extends IndefiniteCommand {
         double driverY = OI.getInstance().getDriverGamepad().getLeftY();
         driverX = MathUtil.mapJoystickOutput(driverX,OI.DEADBAND);
         driverY = MathUtil.mapJoystickOutput(driverY,OI.DEADBAND);
-        Drivetrain.getInstance().arcadeDrivePercentOutput(driverY,driverX);
+        Drivetrain.getInstance().arcadeDrivePercentOutput(driverY, driverX);
     }
 
     public void end() {

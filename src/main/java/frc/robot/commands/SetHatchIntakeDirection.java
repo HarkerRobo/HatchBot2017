@@ -13,6 +13,7 @@ public class SetHatchIntakeDirection extends InstantCommand {
     private HatchPanelIntake.IntakeDirection direction;
 
     public SetHatchIntakeDirection(HatchPanelIntake.IntakeDirection direction) {
+        requires(HatchPanelIntake.getInstance());
         this.direction = direction;
     }
 
