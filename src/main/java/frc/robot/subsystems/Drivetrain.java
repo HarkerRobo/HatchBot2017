@@ -6,6 +6,11 @@ import harkerrobolib.subsystems.HSDrivetrain;
 import harkerrobolib.wrappers.HSTalon;
 
 
+/**
+ * Represents the Drivetrain subsystem 
+ * @author Anirudh Kotamraju
+ * @since January 14 2019
+ */
 public class Drivetrain extends HSDrivetrain {
     private Drivetrain dt;
     private static Drivetrain instance; 

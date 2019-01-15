@@ -1,5 +1,9 @@
 package frc.robot;
 
+import harkerrobolib.wrappers.HSGamepad;
+import harkerrobolib.wrappers.LogitechAnalogGamepad;
+import harkerrobolib.wrappers.XboxGamepad;
+
 /**
  * Class containing controls for operator and driver gamepad
  * 

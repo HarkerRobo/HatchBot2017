@@ -13,6 +13,17 @@ import frc.robot.RobotMap.CAN_IDS;
  * @since January 14, 2019
  */
 public class HatchPanelIntake extends Subsystem {
+    public enum IntakeDirection {
+        IN(DoubleSolenoid.Value.kForward), OUT(DoubleSolenoid.Value.kReverse);
+        private DoubleSolenoid.Value value;
+        private IntakeDirection(DoubleSolenoid.Value value) {
+            this.value = value;
+        }
+        public DoubleSolenoid.Value getValue() {
+            return value;
+        }
+    }
+
     private static HatchPanelIntake instance;
     private DoubleSolenoid doubleSolenoid;
     private Compressor compressor;
@@ -33,8 +44,12 @@ public class HatchPanelIntake extends Subsystem {
         return doubleSolenoid.get();        
     }
 
-    public void setSolenoidState(DoubleSolenoid.Value doubleSolenoid){
-        
+    public void setSolenoidState(DoubleSolenoid.Value state){
+        doubleSolenoid.set(state);
+    }
+
+    public Compressor getCompressor() {
+        return compressor;
     }
    
     public static HatchPanelIntake getInstance() {
