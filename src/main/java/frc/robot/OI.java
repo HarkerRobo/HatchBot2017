@@ -1,5 +1,8 @@
 package frc.robot;
 
+import frc.robot.commands.SetHatchIntakeDirection;
+import frc.robot.commands.ToggleHatchIntakeDirection;
+import frc.robot.subsystems.HatchPanelIntake;
 import harkerrobolib.wrappers.HSGamepad;
 import harkerrobolib.wrappers.LogitechAnalogGamepad;
 import harkerrobolib.wrappers.XboxGamepad;
@@ -9,6 +12,8 @@ import harkerrobolib.wrappers.XboxGamepad;
  * 
  * @since January 14, 2019
  * @author Austin Wang
+ * @author Chirag Kaushik
+ * @author Jatin Kohli
  */
 public class OI {
     private static OI instance;
@@ -23,6 +28,10 @@ public class OI {
     private OI() {
         driverGamepad = new XboxGamepad(DRIVER_PORT);
         operatorGamepad = new LogitechAnalogGamepad(OPERATOR_PORT);
+
+        driverGamepad.getButtonY().whenPressed(new ToggleHatchIntakeDirection());                                        
+        driverGamepad.getButtonA().whenPressed(new SetHatchIntakeDirection(HatchPanelIntake.IntakeDirection.IN));
+        driverGamepad.getButtonB().whenPressed(new SetHatchIntakeDirection(HatchPanelIntake.IntakeDirection.OUT));
     }
     public HSGamepad getDriverGamepad() {
         return driverGamepad;
@@ -38,5 +47,10 @@ public class OI {
             instance = new OI();
         }
         return instance;
+    }
+
+    public static void initBinds()
+    {
+ 
     }
 }                                              
