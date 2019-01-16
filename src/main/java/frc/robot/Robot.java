@@ -9,6 +9,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import frc.robot.subsystems.HatchPanelIntake;
+import frc.robot.subsystems.Drivetrain;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -18,12 +20,20 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  * project.
  */
 public class Robot extends TimedRobot {
+  private Drivetrain dt;
+  private HatchPanelIntake hpi;
+  private OI oi;
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
    */
   @Override
   public void robotInit() {
+    dt = Drivetrain.getInstance();
+    hpi = HatchPanelIntake.getInstance();
+    oi = OI.getInstance();
+
+    dt.talonInit();
   }
 
   /**

@@ -30,7 +30,7 @@ public class OI {
         operatorGamepad = new LogitechAnalogGamepad(OPERATOR_PORT);
 
         driverGamepad.getButtonY().whenPressed(new ToggleHatchIntakeDirection());                                        
-        driverGamepad.getButtonA().whenPressed(new SetHatchIntakeDirection(HatchPanelIntake.IntakeDirection.IN));
+        driverGamepad.getButtonX().whenPressed(new SetHatchIntakeDirection(HatchPanelIntake.IntakeDirection.IN));
         driverGamepad.getButtonB().whenPressed(new SetHatchIntakeDirection(HatchPanelIntake.IntakeDirection.OUT));
     }
     public HSGamepad getDriverGamepad() {

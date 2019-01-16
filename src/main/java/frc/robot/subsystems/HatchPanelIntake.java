@@ -31,7 +31,7 @@ public class HatchPanelIntake extends Subsystem {
 
     private HatchPanelIntake() {
         compressor = new Compressor(CAN_IDS.PCM);
-        doubleSolenoid = new DoubleSolenoid(CAN_IDS.DOUBLE_SOLENOID_FORWARD,CAN_IDS.DOUBLE_SOLENOID_REVERSE);
+        doubleSolenoid = new DoubleSolenoid(CAN_IDS.DOUBLE_SOLENOID_FORWARD, CAN_IDS.DOUBLE_SOLENOID_REVERSE);
         compressor.setClosedLoopControl(COMPRESSOR_INITAL_STATE);
     }
 
@@ -54,7 +54,7 @@ public class HatchPanelIntake extends Subsystem {
    
     public static HatchPanelIntake getInstance() {
         if(instance == null){
-           new HatchPanelIntake();                                                                                        
+           instance = new HatchPanelIntake();                                                                                        
         }
         return instance;
     }
